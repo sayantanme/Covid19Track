@@ -17,17 +17,7 @@ class OverViewDisplayViewController: UIViewController {
         // Drawing code
     }
     */
-    @IBOutlet weak var deltaIncreaseConfirmedField: UILabel!
-    @IBOutlet weak var todaysConfirmedCount: UILabel!
     
-    @IBOutlet weak var deltaIncreaseActiveField: UILabel!
-    @IBOutlet weak var todayActiveCount: UILabel!
-    
-    @IBOutlet weak var deltaIncreaseRecovdField: UILabel!
-    @IBOutlet weak var todaysRecovdCount: UILabel!
-    
-    @IBOutlet weak var deltaIncreaseDcsdField: UILabel!
-    @IBOutlet weak var todaysDcsdCount: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

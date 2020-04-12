@@ -13,15 +13,21 @@ import RxCocoa
 
 class DashboardViewController: UIViewController {
 
+
     let dashboardVM = DashboardViewModel()
     let disBag = DisposeBag()
     var overViewDisplayVC: OverViewDisplayViewController? {
         return children.compactMap({ $0 as? OverViewDisplayViewController }).first
     }
+    @IBOutlet weak var dashboardTableview: UITableView!
+    var dashboardTopView: DashboardHeader!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        dashboardTopView = UINib(nibName: "DashboardHeader", bundle: nil).instantiate(withOwner: self, options: nil).first as? DashboardHeader
+        
         
         dashboardVM.caseTimeSeries.asObservable().subscribe(onNext: { (timeSeries) in
             guard timeSeries.count > 0 else {
@@ -37,16 +43,17 @@ class DashboardViewController: UIViewController {
             }
             if let countryData = statewise.first {
                 DispatchQueue.main.async {
-                    self.overViewDisplayVC?.deltaIncreaseConfirmedField.text = "[+\(countryData.deltaconfirmed)]"
-                    self.overViewDisplayVC?.todaysConfirmedCount.text = countryData.confirmed
+                    self.dashboardTopView.deltaIncreaseConfirmedField.text = "[+\(countryData.deltaconfirmed)]"
+                    self.dashboardTopView.todaysConfirmedCount.text = countryData.confirmed
                     
-                    self.overViewDisplayVC?.deltaIncreaseRecovdField.text = "[+\(countryData.deltarecovered)]"
-                    self.overViewDisplayVC?.todaysRecovdCount.text = countryData.recovered
+                    self.dashboardTopView.deltaIncreaseRecovdField.text = "[+\(countryData.deltarecovered)]"
+                    self.dashboardTopView.todaysRecovdCount.text = countryData.recovered
                     
-                    self.overViewDisplayVC?.deltaIncreaseDcsdField.text = "[+\(countryData.deltadeaths)]"
-                    self.overViewDisplayVC?.todaysDcsdCount.text = countryData.deaths
+                    self.dashboardTopView.deltaIncreaseDcsdField.text = "[+\(countryData.deltadeaths)]"
+                    self.dashboardTopView.todaysDcsdCount.text = countryData.deaths
                     
-                    self.overViewDisplayVC?.todayActiveCount.text = countryData.active
+                    self.dashboardTopView.todayActiveCount.text = countryData.active
+                    
                     
                 }
             }
@@ -72,3 +79,20 @@ class DashboardViewController: UIViewController {
     }
 }
 
+extension DashboardViewController : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 199
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return dashboardTopView
+    }
+}

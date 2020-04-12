@@ -10,6 +10,8 @@
 		066919B69A4B73C30B340BB6 /* libPods-Covid-19 Track-Covid-19 TrackUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE5EB46CBD173E3B0EC66BAA /* libPods-Covid-19 Track-Covid-19 TrackUITests.a */; };
 		392DF0852441BB9F00732DF4 /* StateWise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DF0842441BB9F00732DF4 /* StateWise.swift */; };
 		392DF08824423F9600732DF4 /* OverViewDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DF08724423F9600732DF4 /* OverViewDisplayViewController.swift */; };
+		393D8CEF2442EF5F008FABCD /* DashboardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393D8CEE2442EF5F008FABCD /* DashboardHeader.xib */; };
+		393D8CF12442F23F008FABCD /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393D8CF02442F23F008FABCD /* DashboardHeader.swift */; };
 		398EA1EA2441B21D007F4D03 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1E92441B21D007F4D03 /* DashboardViewModel.swift */; };
 		398EA1ED2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1EC2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift */; };
 		398EA1EF2441B9EF007F4D03 /* RawCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1EE2441B9EF007F4D03 /* RawCases.swift */; };
@@ -47,6 +49,8 @@
 		34727721F20F3FD5F40F0DCE /* Pods-Covid-19 Track-Covid-19 TrackUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Track-Covid-19 TrackUITests.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19 Track-Covid-19 TrackUITests/Pods-Covid-19 Track-Covid-19 TrackUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		392DF0842441BB9F00732DF4 /* StateWise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateWise.swift; sourceTree = "<group>"; };
 		392DF08724423F9600732DF4 /* OverViewDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewDisplayViewController.swift; sourceTree = "<group>"; };
+		393D8CEE2442EF5F008FABCD /* DashboardHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardHeader.xib; sourceTree = "<group>"; };
+		393D8CF02442F23F008FABCD /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
 		398EA1E92441B21D007F4D03 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		398EA1EC2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesWithStateAndTesting.swift; sourceTree = "<group>"; };
 		398EA1EE2441B9EF007F4D03 /* RawCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawCases.swift; sourceTree = "<group>"; };
@@ -108,8 +112,11 @@
 		392DF08624423F6400732DF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				39E522D8243D05D600354D23 /* Main.storyboard */,
 				39E522D6243D05D600354D23 /* DashboardViewController.swift */,
 				392DF08724423F9600732DF4 /* OverViewDisplayViewController.swift */,
+				393D8CEE2442EF5F008FABCD /* DashboardHeader.xib */,
+				393D8CF02442F23F008FABCD /* DashboardHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,7 +169,6 @@
 				398EA1E82441B1ED007F4D03 /* ViewModel */,
 				39E522D2243D05D600354D23 /* AppDelegate.swift */,
 				39E522D4243D05D600354D23 /* SceneDelegate.swift */,
-				39E522D8243D05D600354D23 /* Main.storyboard */,
 				39E522DE243D05DD00354D23 /* Assets.xcassets */,
 				39E522E0243D05DD00354D23 /* LaunchScreen.storyboard */,
 				39E522E3243D05DD00354D23 /* Info.plist */,
@@ -322,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39E522E2243D05DD00354D23 /* LaunchScreen.storyboard in Resources */,
+				393D8CEF2442EF5F008FABCD /* DashboardHeader.xib in Resources */,
 				39E522DF243D05DD00354D23 /* Assets.xcassets in Resources */,
 				39E522DA243D05D600354D23 /* Main.storyboard in Resources */,
 			);
@@ -420,6 +427,7 @@
 				39E522D7243D05D600354D23 /* DashboardViewController.swift in Sources */,
 				398EA1EF2441B9EF007F4D03 /* RawCases.swift in Sources */,
 				392DF08824423F9600732DF4 /* OverViewDisplayViewController.swift in Sources */,
+				393D8CF12442F23F008FABCD /* DashboardHeader.swift in Sources */,
 				398EA1EA2441B21D007F4D03 /* DashboardViewModel.swift in Sources */,
 				392DF0852441BB9F00732DF4 /* StateWise.swift in Sources */,
 				398EA1ED2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift in Sources */,

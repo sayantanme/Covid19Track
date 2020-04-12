@@ -54,7 +54,7 @@ class DashboardViewController: UIViewController {
                     
                     self.dashboardTopView.todayActiveCount.text = countryData.active
                     
-                    
+                    self.dashboardTopView.confirmedGrph.commonInit(dataPoints: [1,2,3], color: .red)
                 }
             }
         })
@@ -67,6 +67,26 @@ class DashboardViewController: UIViewController {
             print("testData:\(testData)")
         })
         .disposed(by: disBag)
+        
+        dashboardVM.graphData.asObservable().subscribe(onNext: { (graphData) in
+            guard graphData.count > 0 else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                
+                
+                self.dashboardTopView.confirmedGrph.commonInit(dataPoints: graphData[Constants.confirmedCases] ?? [], color: UIColor(rgb: Constants.cRed))
+                
+                self.dashboardTopView.activeGraph.commonInit(dataPoints: graphData[Constants.activeCases] ?? [], color: UIColor(rgb: Constants.cBlue))
+                
+                self.dashboardTopView.recoveredGraph.commonInit(dataPoints: graphData[Constants.recoveredCases] ?? [], color: UIColor(rgb: Constants.cGreen))
+                
+                self.dashboardTopView.deceasedGraph.commonInit(dataPoints: graphData[Constants.deceasedCases] ?? [], color: UIColor(rgb: Constants.cGrey))
+            }
+            
+        })
+        .disposed(by: disBag)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +96,10 @@ class DashboardViewController: UIViewController {
 
     @IBAction func refreshDashboard(_ sender: UIBarButtonItem) {
         dashboardVM.getOverViewData(url: "https://api.covid19india.org/data.json")
+    }
+    
+    fileprivate func fetchGraphViewbyId(value: Int) {
+        
     }
 }
 

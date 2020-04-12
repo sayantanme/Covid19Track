@@ -29,5 +29,9 @@ class DashboardHeader: UIView {
     
     @IBOutlet weak var deltaIncreaseDcsdField: UILabel!
     @IBOutlet weak var todaysDcsdCount: UILabel!
-
+    @IBOutlet weak var confirmedGrph: LineGraph!
+    @IBOutlet weak var activeGraph: LineGraph!
+    @IBOutlet weak var recoveredGraph: LineGraph!
+    
+    @IBOutlet weak var deceasedGraph: LineGraph!
 }

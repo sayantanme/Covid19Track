@@ -10,13 +10,26 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+struct Constants {
+    static let confirmedCases = "ConfirmedCases"
+    static let activeCases = "ActiveCases"
+    static let recoveredCases = "RecoveredCases"
+    static let deceasedCases = "DeceasedCases"
+    
+    static let cRed = 0xDD444A
+    static let cBlue = 0x017FF7
+    static let cGreen = 0x01A753
+    static let cGrey = 0x6D767D
+    
+    static let suffixLength = 30
+}
+
 struct DashboardViewModel {
     let bag = DisposeBag()
-    let dashboardData = BehaviorRelay<[TimeSeriesWithStateAndTesting]>(value: [])
     let caseTimeSeries = BehaviorRelay<[CasesTimeSery?]>(value: [])
     let testingData = BehaviorRelay<[Tested?]>(value: [])
     let statewise = BehaviorRelay<[Statewise]>(value: [])
-
+    let graphData = BehaviorRelay<[String: [Int]]>(value: [:])
     
     func getOverViewData(url: String){
         
@@ -44,12 +57,30 @@ struct DashboardViewModel {
             data.count > 0
         }
         .subscribe(onNext: { (items) in
-            //self.dashboardData.accept(items)
-            self.caseTimeSeries.accept([items.first?.casesTimeSeries.last])
-            self.testingData.accept([items.first?.tested.last])
-            self.statewise.accept(items.first!.statewise)
-            
+            self.setUpRelays(items: items)
         })
             .disposed(by: bag)
+    }
+    
+    fileprivate func setUpRelays(items: [TimeSeriesWithStateAndTesting]) {
+        if let it = items.first {
+            var confirmedCases = [Int]()
+            var activeCases = [Int]()
+            var recoveredCases = [Int]()
+            var dcsdCases = [Int]()
+            it.casesTimeSeries.forEach { (item) in
+                let totConfirmed = Int(item.dailyconfirmed) ?? 0
+                let totDecsd = Int(item.dailydeceased) ?? 0
+                let totRecvd = Int(item.dailyrecovered) ?? 0
+                confirmedCases.append(Int(item.dailyconfirmed) ?? 0)
+                activeCases.append(totConfirmed - totDecsd - totRecvd)
+                recoveredCases.append(Int(item.dailyrecovered) ?? 0)
+                dcsdCases.append(Int(item.dailydeceased) ?? 0)
+            }
+            self.caseTimeSeries.accept([it.casesTimeSeries.last])
+            self.testingData.accept([it.tested.last])
+            self.statewise.accept(it.statewise)
+            self.graphData.accept([Constants.confirmedCases:confirmedCases.dropLast().suffix(Constants.suffixLength), Constants.activeCases: activeCases.dropLast().suffix(Constants.suffixLength), Constants.recoveredCases: recoveredCases.dropLast().suffix(Constants.suffixLength), Constants.deceasedCases: dcsdCases.dropLast().suffix(Constants.suffixLength)])
+        }
     }
 }

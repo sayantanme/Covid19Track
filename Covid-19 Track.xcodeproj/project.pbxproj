@@ -12,6 +12,8 @@
 		392DF08824423F9600732DF4 /* OverViewDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DF08724423F9600732DF4 /* OverViewDisplayViewController.swift */; };
 		393D8CEF2442EF5F008FABCD /* DashboardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393D8CEE2442EF5F008FABCD /* DashboardHeader.xib */; };
 		393D8CF12442F23F008FABCD /* DashboardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393D8CF02442F23F008FABCD /* DashboardHeader.swift */; };
+		393D8CF324430268008FABCD /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393D8CF224430268008FABCD /* LineGraph.swift */; };
+		393D8CF524432658008FABCD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393D8CF424432658008FABCD /* Extensions.swift */; };
 		398EA1EA2441B21D007F4D03 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1E92441B21D007F4D03 /* DashboardViewModel.swift */; };
 		398EA1ED2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1EC2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift */; };
 		398EA1EF2441B9EF007F4D03 /* RawCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1EE2441B9EF007F4D03 /* RawCases.swift */; };
@@ -51,6 +53,8 @@
 		392DF08724423F9600732DF4 /* OverViewDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewDisplayViewController.swift; sourceTree = "<group>"; };
 		393D8CEE2442EF5F008FABCD /* DashboardHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardHeader.xib; sourceTree = "<group>"; };
 		393D8CF02442F23F008FABCD /* DashboardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeader.swift; sourceTree = "<group>"; };
+		393D8CF224430268008FABCD /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
+		393D8CF424432658008FABCD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		398EA1E92441B21D007F4D03 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		398EA1EC2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesWithStateAndTesting.swift; sourceTree = "<group>"; };
 		398EA1EE2441B9EF007F4D03 /* RawCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawCases.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				392DF08724423F9600732DF4 /* OverViewDisplayViewController.swift */,
 				393D8CEE2442EF5F008FABCD /* DashboardHeader.xib */,
 				393D8CF02442F23F008FABCD /* DashboardHeader.swift */,
+				393D8CF224430268008FABCD /* LineGraph.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				39E522E0243D05DD00354D23 /* LaunchScreen.storyboard */,
 				39E522E3243D05DD00354D23 /* Info.plist */,
 				39E522DB243D05D600354D23 /* Covid_19_Track.xcdatamodeld */,
+				393D8CF424432658008FABCD /* Extensions.swift */,
 			);
 			path = "Covid-19 Track";
 			sourceTree = "<group>";
@@ -427,9 +433,11 @@
 				39E522D7243D05D600354D23 /* DashboardViewController.swift in Sources */,
 				398EA1EF2441B9EF007F4D03 /* RawCases.swift in Sources */,
 				392DF08824423F9600732DF4 /* OverViewDisplayViewController.swift in Sources */,
+				393D8CF324430268008FABCD /* LineGraph.swift in Sources */,
 				393D8CF12442F23F008FABCD /* DashboardHeader.swift in Sources */,
 				398EA1EA2441B21D007F4D03 /* DashboardViewModel.swift in Sources */,
 				392DF0852441BB9F00732DF4 /* StateWise.swift in Sources */,
+				393D8CF524432658008FABCD /* Extensions.swift in Sources */,
 				398EA1ED2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift in Sources */,
 				39E522DD243D05D600354D23 /* Covid_19_Track.xcdatamodeld in Sources */,
 				39E522D3243D05D600354D23 /* AppDelegate.swift in Sources */,

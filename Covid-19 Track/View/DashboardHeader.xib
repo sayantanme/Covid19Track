@@ -47,7 +47,7 @@
                                                         <constraint firstAttribute="height" constant="35" id="O0N-eX-QJy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.0039215686269999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.8666666666666667" green="0.26666666666666666" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -60,9 +60,8 @@
                                         <constraint firstAttribute="bottom" secondItem="E02-21-jre" secondAttribute="bottom" id="qQM-jn-j2b"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXp-96-cfY">
+                                <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXp-96-cfY" customClass="LineGraph" customModule="Covid_19_Track" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="74" width="102" height="125"/>
-                                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
                             <constraints>
@@ -110,9 +109,8 @@
                                         <constraint firstAttribute="trailing" secondItem="lBw-NY-aeM" secondAttribute="trailing" id="uUx-SV-YvV"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2i-oJ-O0K">
+                                <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2i-oJ-O0K" customClass="LineGraph" customModule="Covid_19_Track" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="74.5" width="102" height="124.5"/>
-                                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
                         </stackView>
@@ -157,9 +155,8 @@
                                         <constraint firstAttribute="trailing" secondItem="oHi-j7-Ykw" secondAttribute="trailing" id="n3D-Uq-nTU"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-Lr-ajG">
+                                <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-Lr-ajG" customClass="LineGraph" customModule="Covid_19_Track" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="74.5" width="102" height="124.5"/>
-                                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
                         </stackView>
@@ -204,9 +201,8 @@
                                         <constraint firstAttribute="height" constant="60" id="z3E-tp-VkQ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfC-q8-rQY">
+                                <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfC-q8-rQY" customClass="LineGraph" customModule="Covid_19_Track" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="74.5" width="102" height="124.5"/>
-                                    <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                             </subviews>
                         </stackView>
@@ -218,16 +214,20 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="tD7-6e-CUU"/>
             <connections>
+                <outlet property="activeGraph" destination="t2i-oJ-O0K" id="VZr-U5-d9a"/>
+                <outlet property="confirmedGrph" destination="HXp-96-cfY" id="Mz5-WV-G6d"/>
+                <outlet property="deceasedGraph" destination="nfC-q8-rQY" id="0W0-V2-PvB"/>
                 <outlet property="deltaIncreaseActiveField" destination="jdh-dS-Lhj" id="eJ9-ui-h3o"/>
                 <outlet property="deltaIncreaseConfirmedField" destination="erf-Ms-azA" id="9E3-eM-0tZ"/>
                 <outlet property="deltaIncreaseDcsdField" destination="pyU-9x-npA" id="mnI-B7-ObI"/>
                 <outlet property="deltaIncreaseRecovdField" destination="wa9-pJ-5O0" id="owe-sS-2z2"/>
+                <outlet property="recoveredGraph" destination="4oz-Lr-ajG" id="SZG-ip-aAo"/>
                 <outlet property="todayActiveCount" destination="8Ps-T0-vfV" id="ZbF-TW-rO0"/>
                 <outlet property="todaysConfirmedCount" destination="m37-Bg-ROs" id="6Yv-QV-BzM"/>
                 <outlet property="todaysDcsdCount" destination="cd7-mF-Cj0" id="t64-Ev-DHQ"/>
                 <outlet property="todaysRecovdCount" destination="vLh-e1-BUT" id="GFV-Jv-ukA"/>
             </connections>
-            <point key="canvasLocation" x="-446" y="-70"/>
+            <point key="canvasLocation" x="-446.65178571428567" y="-70.28985507246378"/>
         </view>
     </objects>
 </document>

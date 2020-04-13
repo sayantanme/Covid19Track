@@ -45,6 +45,7 @@ class LineGraph: LineChartView {
         self.xAxis.enabled = false
         self.legend.enabled = false
         data.setDrawValues(false)
+        self.isUserInteractionEnabled = false
         
     }
 }

@@ -34,4 +34,7 @@ class DashboardHeader: UIView {
     @IBOutlet weak var recoveredGraph: LineGraph!
     
     @IBOutlet weak var deceasedGraph: LineGraph!
+    @IBOutlet weak var lblLastUpdated: UILabel!
+    @IBOutlet weak var latestTestedData: UILabel!
+    @IBOutlet weak var lastTestingDate: UILabel!
 }

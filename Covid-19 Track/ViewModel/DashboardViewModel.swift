@@ -20,6 +20,7 @@ struct Constants {
     static let cBlue = 0x017FF7
     static let cGreen = 0x01A753
     static let cGrey = 0x6D767D
+    static let cPurple = 0x423CA8
     
     static let suffixLength = 30
 }

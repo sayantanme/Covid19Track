@@ -25,7 +25,13 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        updateStatewiseRecords()
+        updateGraphData()
+        updateDashboardData()
         
+    }
+    
+    fileprivate func updateStatewiseRecords() {
         dashboardTopView = UINib(nibName: "DashboardHeader", bundle: nil).instantiate(withOwner: self, options: nil).first as? DashboardHeader
         
         
@@ -37,6 +43,20 @@ class DashboardViewController: UIViewController {
         })
         .disposed(by: disBag)
         
+        
+        
+        dashboardVM.testingData.asObservable().subscribe(onNext: { (testData) in
+            guard testData.count > 0 else {
+                return
+            }
+            print("testData:\(testData)")
+        })
+        .disposed(by: disBag)
+        
+        
+    }
+    
+    fileprivate func updateDashboardData() {
         dashboardVM.statewise.asObservable().subscribe(onNext: { (statewise) in
             guard statewise.count > 0 else {
                 return
@@ -59,15 +79,9 @@ class DashboardViewController: UIViewController {
             }
         })
         .disposed(by: disBag)
-        
-        dashboardVM.testingData.asObservable().subscribe(onNext: { (testData) in
-            guard testData.count > 0 else {
-                return
-            }
-            print("testData:\(testData)")
-        })
-        .disposed(by: disBag)
-        
+    }
+    
+    fileprivate func updateGraphData() {
         dashboardVM.graphData.asObservable().subscribe(onNext: { (graphData) in
             guard graphData.count > 0 else {
                 return
@@ -96,10 +110,6 @@ class DashboardViewController: UIViewController {
 
     @IBAction func refreshDashboard(_ sender: UIBarButtonItem) {
         dashboardVM.getOverViewData(url: "https://api.covid19india.org/data.json")
-    }
-    
-    fileprivate func fetchGraphViewbyId(value: Int) {
-        
     }
 }
 

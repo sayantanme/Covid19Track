@@ -28,12 +28,20 @@ class DashboardViewController: UIViewController {
         updateStatewiseRecords()
         updateGraphData()
         updateDashboardData()
-        
+        updateLastUpdatedTime()
+    }
+    
+    fileprivate func updateLastUpdatedTime() {
+        dashboardVM.lastUpdatedTime.asObservable().subscribe(onNext: {(date) in
+            DispatchQueue.main.async {
+                self.dashboardTopView.lblLastUpdated.text = date.first
+            }
+        })
+        .disposed(by: disBag)
     }
     
     fileprivate func updateStatewiseRecords() {
         dashboardTopView = UINib(nibName: "DashboardHeader", bundle: nil).instantiate(withOwner: self, options: nil).first as? DashboardHeader
-        
         
         dashboardVM.caseTimeSeries.asObservable().subscribe(onNext: { (timeSeries) in
             guard timeSeries.count > 0 else {
@@ -46,10 +54,13 @@ class DashboardViewController: UIViewController {
         
         
         dashboardVM.testingData.asObservable().subscribe(onNext: { (testData) in
-            guard testData.count > 0 else {
-                return
+            if let freshData = testData.last {
+                DispatchQueue.main.async {
+                    self.dashboardTopView.latestTestedData.text = freshData?.totalsamplestested
+                    self.dashboardTopView.lastTestingDate.text = self.dashboardVM.convertIntoFormat(dateString: freshData?.updatetimestamp)
+                }
             }
-            print("testData:\(testData)")
+            
         })
         .disposed(by: disBag)
         
@@ -123,7 +134,7 @@ extension DashboardViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 199
+        return 250
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

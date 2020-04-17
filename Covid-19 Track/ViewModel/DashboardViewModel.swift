@@ -31,6 +31,7 @@ struct DashboardViewModel {
     let testingData = BehaviorRelay<[Tested?]>(value: [])
     let statewise = BehaviorRelay<[Statewise]>(value: [])
     let graphData = BehaviorRelay<[String: [Int]]>(value: [:])
+    let lastUpdatedTime = BehaviorRelay<[String]>(value: [])
     
     func getOverViewData(url: String){
         
@@ -82,6 +83,20 @@ struct DashboardViewModel {
             self.testingData.accept([it.tested.last])
             self.statewise.accept(it.statewise)
             self.graphData.accept([Constants.confirmedCases:confirmedCases.dropLast().suffix(Constants.suffixLength), Constants.activeCases: activeCases.dropLast().suffix(Constants.suffixLength), Constants.recoveredCases: recoveredCases.dropLast().suffix(Constants.suffixLength), Constants.deceasedCases: dcsdCases.dropLast().suffix(Constants.suffixLength)])
+            
+            self.lastUpdatedTime.accept([convertIntoFormat(dateString: it.statewise.first?.lastupdatedtime)])
         }
+    }
+    
+    func convertIntoFormat(dateString: String?) -> String{
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd/MM/yyyy HH:mm:ss"
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd,yyyy HH:mm"
+        if let str = dateString , let date = dateFormatterGet.date(from: str) {
+            return dateFormatter.string(from: date)
+        }
+        return ""
     }
 }

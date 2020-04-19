@@ -25,6 +25,7 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //dashboardTableview.rx.setDataSource(self).disposed(by: disBag)
         updateStatewiseRecords()
         updateGraphData()
         updateDashboardData()
@@ -43,12 +44,9 @@ class DashboardViewController: UIViewController {
     fileprivate func updateStatewiseRecords() {
         dashboardTopView = UINib(nibName: "DashboardHeader", bundle: nil).instantiate(withOwner: self, options: nil).first as? DashboardHeader
         
-        dashboardVM.caseTimeSeries.asObservable().subscribe(onNext: { (timeSeries) in
-            guard timeSeries.count > 0 else {
-                return
-            }
-            print("timeseries:\(timeSeries)")
-        })
+        dashboardVM.statewise.bind(to: dashboardTableview.rx.items(cellIdentifier: "stateData", cellType: RecordCell.self)) {row,item,cell in
+            cell.setupCell(st: item)
+        }
         .disposed(by: disBag)
         
         
@@ -68,24 +66,23 @@ class DashboardViewController: UIViewController {
     }
     
     fileprivate func updateDashboardData() {
-        dashboardVM.statewise.asObservable().subscribe(onNext: { (statewise) in
+        dashboardVM.overallData.asObservable().subscribe(onNext: { (statewise) in
             guard statewise.count > 0 else {
                 return
             }
-            if let countryData = statewise.first {
+            if let countryData = statewise.first, let cData = countryData {
                 DispatchQueue.main.async {
-                    self.dashboardTopView.deltaIncreaseConfirmedField.text = "[+\(countryData.deltaconfirmed)]"
-                    self.dashboardTopView.todaysConfirmedCount.text = countryData.confirmed
+                    self.dashboardTopView.deltaIncreaseConfirmedField.text = "[+\(cData.deltaconfirmed)]"
+                    self.dashboardTopView.todaysConfirmedCount.text = cData.confirmed
                     
-                    self.dashboardTopView.deltaIncreaseRecovdField.text = "[+\(countryData.deltarecovered)]"
-                    self.dashboardTopView.todaysRecovdCount.text = countryData.recovered
+                    self.dashboardTopView.deltaIncreaseRecovdField.text = "[+\(cData.deltarecovered)]"
+                    self.dashboardTopView.todaysRecovdCount.text = cData.recovered
                     
-                    self.dashboardTopView.deltaIncreaseDcsdField.text = "[+\(countryData.deltadeaths)]"
-                    self.dashboardTopView.todaysDcsdCount.text = countryData.deaths
+                    self.dashboardTopView.deltaIncreaseDcsdField.text = "[+\(cData.deltadeaths)]"
+                    self.dashboardTopView.todaysDcsdCount.text = cData.deaths
                     
-                    self.dashboardTopView.todayActiveCount.text = countryData.active
+                    self.dashboardTopView.todayActiveCount.text = cData.active
                     
-                    self.dashboardTopView.confirmedGrph.commonInit(dataPoints: [1,2,3], color: .red)
                 }
             }
         })
@@ -124,20 +121,38 @@ class DashboardViewController: UIViewController {
     }
 }
 
-extension DashboardViewController : UITableViewDataSource, UITableViewDelegate {
+extension DashboardViewController : UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        return UITableViewCell()
+//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 250
+        if section == 0 {
+            return 290
+        }
+        return 40
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return dashboardTopView
+        if section == 0{
+            return dashboardTopView
+        }
+        let stateHeader = UINib(nibName: "DashboardHeader", bundle: nil).instantiate(withOwner: self, options: nil) as? [UIView]
+        return stateHeader?.filter { $0 as? DashboardHeader == nil } .first
+    }
+    
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        dashboardTableview.reloadData()
     }
 }

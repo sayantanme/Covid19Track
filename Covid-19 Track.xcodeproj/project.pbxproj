@@ -17,6 +17,7 @@
 		398EA1EA2441B21D007F4D03 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1E92441B21D007F4D03 /* DashboardViewModel.swift */; };
 		398EA1ED2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1EC2441B494007F4D03 /* TimeSeriesWithStateAndTesting.swift */; };
 		398EA1EF2441B9EF007F4D03 /* RawCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398EA1EE2441B9EF007F4D03 /* RawCases.swift */; };
+		399BDE51244C777E00C307CE /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399BDE50244C777E00C307CE /* RecordCell.swift */; };
 		39BA099D6C511505973E05FF /* libPods-Covid-19 TrackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68681F2D8165F1415964FDD6 /* libPods-Covid-19 TrackTests.a */; };
 		39E522D3243D05D600354D23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E522D2243D05D600354D23 /* AppDelegate.swift */; };
 		39E522D5243D05D600354D23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E522D4243D05D600354D23 /* SceneDelegate.swift */; };
@@ -60,6 +61,7 @@
 		398EA1EE2441B9EF007F4D03 /* RawCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawCases.swift; sourceTree = "<group>"; };
 		399BADBF24426DFB000EA244 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		399BADC324426FC6000EA244 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		399BDE50244C777E00C307CE /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		39E522CF243D05D600354D23 /* Covid-19 Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid-19 Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E522D2243D05D600354D23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39E522D4243D05D600354D23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				393D8CEE2442EF5F008FABCD /* DashboardHeader.xib */,
 				393D8CF02442F23F008FABCD /* DashboardHeader.swift */,
 				393D8CF224430268008FABCD /* LineGraph.swift */,
+				399BDE50244C777E00C307CE /* RecordCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				39E522DD243D05D600354D23 /* Covid_19_Track.xcdatamodeld in Sources */,
 				39E522D3243D05D600354D23 /* AppDelegate.swift in Sources */,
 				39E522D5243D05D600354D23 /* SceneDelegate.swift in Sources */,
+				399BDE51244C777E00C307CE /* RecordCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
